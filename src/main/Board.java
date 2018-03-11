@@ -7,6 +7,7 @@ package main;
 
 import java.util.Scanner;
 import static main.StdDraw.setCanvasSize;
+import static main.StdDraw.setScale;
 import static main.StdDraw.setXscale;
 import static main.StdDraw.setYscale;
 class Board {
@@ -37,13 +38,8 @@ class Board {
         
         for(int i = 0 ; i <Boardsize;i++) {
                     for(int j = 0; j<Boardsize;j++){
-                        
-                        if(i==0 || i+1==Boardsize && j <= Boardsize) Board[i][j]='*';
-                        else if (j == 0 || j+1 == Boardsize && i<= Boardsize)Board[i][j]='*';
-                        else Board[i][j]=' ';
-                    }
-                    
-        
+                        Board[i][j]=' ';    
+                    }      
         }
         DrawBoard();
         
@@ -58,24 +54,24 @@ class Board {
     
     public void DrawBoard(){
         // 0.02
-        setCanvasSize(1000, 1000);
-        setXscale(0,100);
-        setYscale(0,100);
+        setScale(0, Boardsize); // size 25
+        double y = 0;
+        double step = 1;
+        Square[] square = new Square[Boardsize];
+        int sq = 0;
         
-        double y = 2.0;
-        double step = 4.0;
-        
-        for(int i = 0;i<Boardsize;i++){                
-                double x = 2.0;   
-                StdDraw.square(x, y, 2.0);
-        
-                for(int j = 0;j<Boardsize;j++){
-                    StdDraw.square(x, y, 2.0);
-                    x+=step;
+        for(int i = 0;i<Boardsize;i++){     
+            
+                double x = 0;   
+                for(int j = 0;j<Boardsize;j++){  
+                    
+                   square[sq]= new Square(i,j);
                    
-            }
-           
+                   StdDraw.square(x, y, 1);  
+                   x+=step;
+            } 
                  y+=step;
+                 
         }
         
       
