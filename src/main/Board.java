@@ -6,15 +6,13 @@
 package main;
 
 import java.util.Scanner;
-
-/**
- *
- * @author K3rn3l P4n1c
- */
 class Board {
     
     public int Boardsize = 0;
     public char[][] Board;
+    double[] x = { 0.1, 0.2, 0.3, 0.2 };
+    double[] y = { 0.2, 0.3, 0.2, 0.1 };
+    
     
     public Board(int size){
         
@@ -30,6 +28,7 @@ class Board {
             int y = (int) random*Board.length;
             Board[y][x]='!';
         }
+       
     }
 
     private void createBoard() {
@@ -39,6 +38,7 @@ class Board {
         System.out.print("How Many Bombs should be on the Board ? : ");
         int bombs = sc.nextInt();
         if(bombs>Boardsize/2) createBoard();
-        setBombs(10);
+        
+        setBombs(bombs);
     }
 }
