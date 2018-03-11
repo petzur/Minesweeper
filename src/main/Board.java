@@ -10,9 +10,6 @@ class Board {
     
     public int Boardsize = 0;
     public char[][] Board;
-    double[] x = { 0.1, 0.2, 0.3, 0.2 };
-    double[] y = { 0.2, 0.3, 0.2, 0.1 };
-    
     
     public Board(int size){
         
@@ -32,7 +29,21 @@ class Board {
     }
 
     private void createBoard() {
-        // NASSIM
+        
+        Board = new char[Boardsize][Boardsize];
+        
+        for(int i = 0 ; i <Boardsize;i++) {
+                    for(int j = 0; j<Boardsize;j++){
+                        
+                        if(i==0 || i+1==Boardsize && j <= Boardsize) Board[i][j]='*';
+                        else if (j == 0 || j+1 == Boardsize && i<= Boardsize)Board[i][j]='*';
+                        else Board[i][j]=' ';
+                        
+                        System.out.print(Board[i][j]);
+                    }
+                    System.out.println();
+        
+        }
         
         Scanner sc = new Scanner(System.in);
         System.out.print("How Many Bombs should be on the Board ? : ");
@@ -40,5 +51,7 @@ class Board {
         if(bombs>Boardsize/2) createBoard();
         
         setBombs(bombs);
+    
     }
+    
 }
