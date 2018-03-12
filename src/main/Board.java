@@ -6,10 +6,7 @@
 package main;
 
 import java.util.Scanner;
-import static main.StdDraw.setCanvasSize;
 import static main.StdDraw.setScale;
-import static main.StdDraw.setXscale;
-import static main.StdDraw.setYscale;
 class Board {
     
     public int Boardsize = 0;
@@ -27,7 +24,7 @@ class Board {
             double random = Math.random();
             int x = (int) random*Board.length;
             int y = (int) random*Board.length;
-            Board[y][x]='!';
+            Board[y][x]='X';
         }
        
     }
@@ -41,23 +38,23 @@ class Board {
                         Board[i][j]=' ';    
                     }      
         }
-        DrawBoard();
         
         Scanner sc = new Scanner(System.in);
         System.out.print("How Many Bombs should be on the Board ? : ");
         int bombs = sc.nextInt();
         if(bombs>Boardsize/2) createBoard();
         
+        DrawBoard();
         setBombs(bombs); 
     
     }
     
     public void DrawBoard(){
-        // 0.02
-        setScale(0, Boardsize); // size 25
+   
+        setScale(0, Boardsize); 
         double y = 0;
         double step = 1;
-        Square[] square = new Square[Boardsize];
+        Square[] square = new Square[Boardsize*2];
         int sq = 0;
         
         for(int i = 0;i<Boardsize;i++){     
